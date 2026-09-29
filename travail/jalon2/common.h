@@ -42,7 +42,6 @@ char *msg_type_str[] = {
 void die(int val, char *msg);
 int read_from_socket(int fd, void *buf, size_t msg_size);
 int write_in_socket(int fd, const void *buf, size_t msg_size);
-int send_message(int fd, const struct message *msg, const char *payload);
 int recv_message(int fd, struct message *msg, char *payload, size_t payload_cap);
 
 #endif

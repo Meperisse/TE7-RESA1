@@ -41,18 +41,6 @@ int write_in_socket(int fd, const void *buf, size_t msg_size) {
 	return (int)total;
 }
 
-int send_message(int fd, const struct message *msg, const char *payload) {
-	if (write_in_socket(fd, msg, sizeof(*msg)) <= 0) {
-		return -1;
-	}
-	if (msg->pld_len > 0) {
-		if (write_in_socket(fd, payload, (size_t)msg->pld_len) <= 0) {
-			return -1;
-		}
-	}
-	return 1;
-}
-
 int recv_message(int fd, struct message *msg, char *payload, size_t payload_cap) {
 	int r = read_from_socket(fd, msg, sizeof(*msg));
 	if (r <= 0) { 

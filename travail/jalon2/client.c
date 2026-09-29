@@ -1,5 +1,4 @@
 #include "common.h"
-#include "msg_struct.h"
 
 #include <arpa/inet.h>
 #include <ctype.h>

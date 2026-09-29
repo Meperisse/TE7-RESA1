@@ -15,6 +15,19 @@
 #define MAX_MESSAGE_SIZE 4096
 #define MAX_CLIENTS 128
 
+
+int send_message(int fd, const struct message *msg, const char *payload) {
+	if (write_in_socket(fd, msg, sizeof(*msg)) <= 0) {
+		return -1;
+	}
+	if (msg->pld_len > 0) {
+		if (write_in_socket(fd, payload, (size_t)msg->pld_len) <= 0) {
+			return -1;
+		}
+	}
+	return 1;
+}
+
 int setup_listening_socket(int port) {
 	int listen_fd;
 	int result;
